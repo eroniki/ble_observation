@@ -16,7 +16,7 @@ class BLEHandler(object):
         self.err = None
 
     # def scan(self):
-    def scan(self):
+    def query(self):
         try:
             print "Scanning has been started"
             self.process = subprocess.check_output(["bluez-test-discovery"],shell=True, preexec_fn=os.setsid)

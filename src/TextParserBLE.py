@@ -2,10 +2,10 @@
 import re
 import blebeacon
 
-class TextParser(object):
-    """docstring for TextParser"""
+class TextParserBLE(object):
+    """docstring for TextParserBLE"""
     def __init__(self):
-        super(TextParser, self).__init__()
+        super(TextParserBLE, self).__init__()
         self.__BSSList    = None
         self.__RSSList    = None
         self.__SSIDList   = None
