@@ -43,7 +43,6 @@ class TextParserBLE(object):
 
     def findSSID(self, hash):
         self.__SSIDList = re.findall(hash, self.__reading)
-        print self.__SSIDList
 
         for i in range(len(self.__SSIDList)):
             self.__SSIDList[i] = self.__SSIDList[i].replace("Alias = ", "")
