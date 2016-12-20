@@ -21,7 +21,7 @@ class ble_obs(object):
     """docstring for ble_obs"""
     def __init__(self):
         super(ble_obs, self).__init__()
-        rospy.init_node('wifi_obs_server')
+        rospy.init_node('ble_obs_server')
         self.s = rospy.Service('ble_observation', BLEArrayService, self.handle_ble_obs)
 
         self.beacons = list()
@@ -29,7 +29,7 @@ class ble_obs(object):
         # self.ret = self.bleHandler.scan()
         self.text_parser = TextParserBLE.TextParserBLE()
 
-        rospy.loginfo("Ready to send wifi observations")
+        rospy.loginfo("Ready to send ble observations")
         rospy.spin()
 
         # print "Scanning has been done"
@@ -61,13 +61,14 @@ class ble_obs(object):
             response.success = False
             response.message = "Error!"
 
-            return response
+        return response
 
     def handle_ble_obs(self, data):
         rospy.loginfo("Service request captured")
         self.reading =  self.bleHandler.query()
         self.text_parser.parse(self.reading)
         self.beacons = self.text_parser.beaconList
+        # self.text_parser.printbeaconList()
         return self.construct_response()
 
 
