@@ -46,8 +46,11 @@ class ble_obs(object):
     def construct_response(self):
         response = BLEArrayServiceResponse()
         obsList = list()
+        header = Header()
+        header.stamp = rospy.get_rostime()
         for i in range(len(self.beacons)):
             obs = BLEMessage()
+            obs.header = header
             obs.ssid = self.beacons[i].SSID
             obs.mac = self.beacons[i].BSS
             obs.rss = self.beacons[i].RSS
